@@ -1,0 +1,78 @@
+import { useContext, useState } from "react";
+import { CartContext } from "../context/CartContext";
+import products from "../data/product.js";
+
+const ProductList = () => {
+  const { addToCart } = useContext(CartContext);
+  const [filter, setFilter] = useState("all");
+
+  const filteredProducts = filter === "all" 
+    ? products 
+    : products.filter(product => product.category === filter);
+
+  return (
+    <div className="container mx-auto px-4 py-8">
+      <div className="flex justify-between items-center mb-6">
+        <h2 className="text-2xl font-pokemon text-pokemon-red dark:text-pokemon-yellow">Productos Pokémon</h2>
+        <div className="flex gap-2">
+          <button 
+            onClick={() => setFilter("all")}
+            className={`px-4 py-2 rounded ${filter === "all" 
+              ? "bg-yellow-500 text-white" 
+              : "bg-gray-200 dark:bg-gray-700 dark:text-white"}`}
+          >
+            Todos
+          </button>
+          <button 
+            onClick={() => setFilter("card")}
+            className={`px-4 py-2 rounded ${filter === "card" 
+              ? "bg-yellow-500 text-white" 
+              : "bg-gray-200 dark:bg-gray-700 dark:text-white"}`}
+          >
+            Cartas
+          </button>
+          <button 
+            onClick={() => setFilter("figure")}
+            className={`px-4 py-2 rounded ${filter === "figure" 
+              ? "bg-yellow-500 text-white" 
+              : "bg-gray-200 dark:bg-gray-700 dark:text-white"}`}
+          >
+            Figuras
+          </button>
+        </div>
+      </div>
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        {filteredProducts.map((product) => (
+          <div 
+            key={product.id} 
+            className="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden transition-transform hover:scale-105"
+          >
+            <img 
+              src={product.image} 
+              alt={product.name} 
+              className="w-full h-48 object-contain bg-gray-100 dark:bg-gray-700 p-2"
+            />
+            <div className="p-4">
+              <h3 className="font-bold text-lg mb-1 dark:text-white">{product.name}</h3>
+              <p className="text-sm text-gray-600 dark:text-gray-300 mb-2">{product.description}</p>
+              <div className="flex justify-between items-center">
+                <span className="font-bold text-lg text-blue-600 dark:text-blue-400">
+                  ${product.price.toFixed(2)}
+                </span>
+                <button
+                  onClick={() => addToCart(product)}
+                  className="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded-full text-sm transform transition hover:scale-105"
+                >
+                  Agregar
+                </button>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default ProductList;
