@@ -10,7 +10,7 @@ const Header = () => {
       <div className="container mx-auto px-4 flex justify-between items-center">
         <div className="flex items-center">
           <img
-            src="/api/placeholder/40/40"
+            src="/IconoLogo.png"
             alt="Logo Pokémon"
             className="w-10 h-10 mr-3"
           />
