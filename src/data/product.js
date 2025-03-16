@@ -4,7 +4,7 @@ const products = [
       name: "Charizard GX Card",
       price: 89.99,
       category: "card",
-      image: "/api/placeholder/200/200",
+      image: "/CharizardGXCard.png",
       description: "Rare Charizard GX card from Sun & Moon series"
     },
     {
@@ -12,7 +12,7 @@ const products = [
       name: "Pikachu V Card",
       price: 29.99,
       category: "card",
-      image: "/api/placeholder/200/200",
+      image: "/PikachuVCard.png",
       description: "Popular Pikachu V card from Sword & Shield"
     },
     {
@@ -20,7 +20,7 @@ const products = [
       name: "Mewtwo EX Card",
       price: 49.99,
       category: "card",
-      image: "/api/placeholder/200/200",
+      image: "/MewtwoExCard.png",
       description: "Powerful Mewtwo EX card with special abilities"
     },
     {
@@ -28,7 +28,7 @@ const products = [
       name: "Gengar VMAX Card",
       price: 59.99,
       category: "card",
-      image: "/api/placeholder/200/200",
+      image: "/GengarVMax.jpg",
       description: "Shadow-type Gengar VMAX card with high HP"
     },
     {
@@ -36,7 +36,7 @@ const products = [
       name: "Pikachu Figure (Standard)",
       price: 19.99,
       category: "figure",
-      image: "/api/placeholder/200/200",
+      image: "/PikachuFigureStandard.jpg",
       description: "4-inch Pikachu figure with classic pose"
     },
     {
@@ -44,7 +44,7 @@ const products = [
       name: "Charizard Deluxe Figure",
       price: 39.99,
       category: "figure",
-      image: "/api/placeholder/200/200",
+      image: "/CharizardDeluxeFigure.jpg",
       description: "7-inch detailed Charizard figure with flame effect"
     },
     {
@@ -52,7 +52,7 @@ const products = [
       name: "Eevee Evolution Set",
       price: 79.99,
       category: "figure",
-      image: "/api/placeholder/200/200",
+      image: "/Eeveelutions.jpg",
       description: "Collection of all Eevee evolution figures (3-inch each)"
     },
     {
@@ -60,7 +60,7 @@ const products = [
       name: "Mewtwo Premium Figure",
       price: 49.99,
       category: "figure",
-      image: "/api/placeholder/200/200",
+      image: "/mewtwopremiumfigure.jpg",
       description: "6-inch premium Mewtwo figure with psychic effect"
     }
   ];
