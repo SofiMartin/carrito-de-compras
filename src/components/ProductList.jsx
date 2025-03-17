@@ -1,9 +1,11 @@
 import { useContext, useState } from "react";
 import { CartContext } from "../context/CartContext";
+import { useTheme } from "../context/ThemeContext";
 import products from "../data/product.js";
 
 const ProductList = () => {
   const { addToCart } = useContext(CartContext);
+  const { isDarkMode } = useTheme();
   const [filter, setFilter] = useState("all");
 
   const filteredProducts = filter === "all" 
@@ -19,7 +21,9 @@ const ProductList = () => {
             onClick={() => setFilter("all")}
             className={`px-4 py-2 rounded ${filter === "all" 
               ? "bg-yellow-500 text-white" 
-              : "bg-gray-200 dark:bg-gray-700 dark:text-white"}`}
+              : isDarkMode 
+                ? "bg-gray-700 text-white" 
+                : "bg-gray-200 text-gray-800"}`}
           >
             Todos
           </button>
@@ -27,7 +31,9 @@ const ProductList = () => {
             onClick={() => setFilter("card")}
             className={`px-4 py-2 rounded ${filter === "card" 
               ? "bg-yellow-500 text-white" 
-              : "bg-gray-200 dark:bg-gray-700 dark:text-white"}`}
+              : isDarkMode 
+                ? "bg-gray-700 text-white" 
+                : "bg-gray-200 text-gray-800"}`}
           >
             Cartas
           </button>
@@ -35,7 +41,9 @@ const ProductList = () => {
             onClick={() => setFilter("figure")}
             className={`px-4 py-2 rounded ${filter === "figure" 
               ? "bg-yellow-500 text-white" 
-              : "bg-gray-200 dark:bg-gray-700 dark:text-white"}`}
+              : isDarkMode 
+                ? "bg-gray-700 text-white" 
+                : "bg-gray-200 text-gray-800"}`}
           >
             Figuras
           </button>
@@ -46,18 +54,18 @@ const ProductList = () => {
         {filteredProducts.map((product) => (
           <div 
             key={product.id} 
-            className="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden transition-transform hover:scale-105"
+            className={`${isDarkMode ? 'bg-gray-800 text-white' : 'bg-white'} rounded-lg shadow-md overflow-hidden transition-transform hover:scale-105`}
           >
             <img 
               src={product.image} 
               alt={product.name} 
-              className="w-full h-48 object-contain bg-gray-100 dark:bg-gray-700 p-2"
+              className={`w-full h-48 object-contain ${isDarkMode ? 'bg-gray-700' : 'bg-gray-50'} p-2`}
             />
             <div className="p-4">
-              <h3 className="font-bold text-lg mb-1 dark:text-white">{product.name}</h3>
-              <p className="text-sm text-gray-600 dark:text-gray-300 mb-2">{product.description}</p>
+              <h3 className="font-bold text-lg mb-1">{product.name}</h3>
+              <p className={`text-sm ${isDarkMode ? 'text-gray-300' : 'text-gray-600'} mb-2`}>{product.description}</p>
               <div className="flex justify-between items-center">
-                <span className="font-bold text-lg text-blue-600 dark:text-blue-400">
+                <span className={`font-bold text-lg ${isDarkMode ? 'text-blue-400' : 'text-blue-600'}`}>
                   ${product.price.toFixed(2)}
                 </span>
                 <button

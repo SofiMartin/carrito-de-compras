@@ -1,31 +1,31 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState, useContext, useEffect } from "react";
 
-export const ThemeContext = createContext();
+const ThemeContext = createContext();
+
+export const useTheme = () => useContext(ThemeContext);
 
 export const ThemeProvider = ({ children }) => {
-  const [darkMode, setDarkMode] = useState(() => {
-    const savedTheme = localStorage.getItem("theme");
-    return savedTheme ? JSON.parse(savedTheme) : false;
+  const [isDarkMode, setIsDarkMode] = useState(() => {
+    return localStorage.getItem("darkMode") === "true";
   });
 
   useEffect(() => {
-    localStorage.setItem("theme", JSON.stringify(darkMode));
-    if (darkMode) {
+    // Guardar el estado del modo oscuro en localStorage
+    localStorage.setItem("darkMode", isDarkMode);
+
+    // Aplicar o eliminar la clase "dark" en el elemento <html>
+    if (isDarkMode) {
       document.documentElement.classList.add("dark");
     } else {
       document.documentElement.classList.remove("dark");
     }
-  }, [darkMode]);
+  }, [isDarkMode]);
 
-  const toggleTheme = () => {
-    setDarkMode(!darkMode);
-  };
+  const toggleTheme = () => setIsDarkMode((prev) => !prev);
 
   return (
-    <ThemeContext.Provider value={{ darkMode, toggleTheme }}>
+    <ThemeContext.Provider value={{ isDarkMode, toggleTheme }}>
       {children}
     </ThemeContext.Provider>
   );
 };
-
-export default ThemeContext;

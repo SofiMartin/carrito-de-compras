@@ -5,34 +5,34 @@ const CartItem = ({ item }) => {
   const { updateQuantity, removeFromCart } = useContext(CartContext);
 
   return (
-    <div className="flex items-center p-4 border-b dark:border-gray-700">
+    <div className="flex items-center p-4 border-b">
       <img 
         src={item.image} 
         alt={item.name} 
-        className="w-16 h-16 object-contain bg-gray-100 dark:bg-gray-700 rounded mr-4"
+        className="w-16 h-16 object-contain bg-gray-100 rounded mr-4"
       />
       <div className="flex-1">
-        <h4 className="font-medium dark:text-white">{item.name}</h4>
-        <p className="text-sm text-gray-500 dark:text-gray-400">${item.price.toFixed(2)} c/u</p>
+        <h4 className="font-medium">{item.name}</h4>
+        <p className="text-sm text-gray-500">${item.price.toFixed(2)} c/u</p>
       </div>
       <div className="flex items-center">
         <button
           onClick={() => updateQuantity(item.id, item.quantity - 1)}
-          className="bg-gray-200 dark:bg-gray-700 w-8 h-8 flex items-center justify-center rounded-l"
+          className="bg-gray-200 w-8 h-8 flex items-center justify-center rounded-l"
         >
-          <span className="text-lg dark:text-white">-</span>
+          <span className="text-lg">-</span>
         </button>
-        <span className="bg-white dark:bg-gray-800 w-10 h-8 flex items-center justify-center border-t border-b dark:border-gray-700 dark:text-white">
+        <span className="bg-white w-10 h-8 flex items-center justify-center border-t border-b">
           {item.quantity}
         </span>
         <button
           onClick={() => updateQuantity(item.id, item.quantity + 1)}
-          className="bg-gray-200 dark:bg-gray-700 w-8 h-8 flex items-center justify-center rounded-r"
+          className="bg-gray-200 w-8 h-8 flex items-center justify-center rounded-r"
         >
-          <span className="text-lg dark:text-white">+</span>
+          <span className="text-lg">+</span>
         </button>
       </div>
-      <div className="w-24 text-right font-medium dark:text-white ml-4">
+      <div className="w-24 text-right font-medium ml-4">
         ${(item.price * item.quantity).toFixed(2)}
       </div>
       <button
