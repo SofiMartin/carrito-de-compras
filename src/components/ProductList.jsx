@@ -15,12 +15,14 @@ const ProductList = () => {
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="flex justify-between items-center mb-6">
-        <h2 className="text-2xl font-pokemon text-pokemon-red dark:text-pokemon-yellow">Productos Pokémon</h2>
+        <h2 className={`text-2xl font-bold ${isDarkMode ? 'text-white' : 'text-gray-800'} border-b-2 ${isDarkMode ? 'border-blue-400' : 'border-blue-500'} pb-2`}>
+          Productos Pokémon
+        </h2>
         <div className="flex gap-2">
           <button 
             onClick={() => setFilter("all")}
             className={`px-4 py-2 rounded ${filter === "all" 
-              ? "bg-yellow-500 text-white" 
+              ? "bg-blue-500 text-white" 
               : isDarkMode 
                 ? "bg-gray-700 text-white" 
                 : "bg-gray-200 text-gray-800"}`}
@@ -30,7 +32,7 @@ const ProductList = () => {
           <button 
             onClick={() => setFilter("card")}
             className={`px-4 py-2 rounded ${filter === "card" 
-              ? "bg-yellow-500 text-white" 
+              ? "bg-blue-500 text-white" 
               : isDarkMode 
                 ? "bg-gray-700 text-white" 
                 : "bg-gray-200 text-gray-800"}`}
@@ -40,7 +42,7 @@ const ProductList = () => {
           <button 
             onClick={() => setFilter("figure")}
             className={`px-4 py-2 rounded ${filter === "figure" 
-              ? "bg-yellow-500 text-white" 
+              ? "bg-blue-500 text-white" 
               : isDarkMode 
                 ? "bg-gray-700 text-white" 
                 : "bg-gray-200 text-gray-800"}`}
@@ -70,7 +72,7 @@ const ProductList = () => {
                 </span>
                 <button
                   onClick={() => addToCart(product)}
-                  className="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded-full text-sm transform transition hover:scale-105"
+                  className="bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 rounded text-sm"
                 >
                   Agregar
                 </button>
